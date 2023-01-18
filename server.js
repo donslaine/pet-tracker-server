@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const express = require('express')
 
-const db = require('./config.db')
+const db = require('./config/db')
 const PORT = 8000
 
 const petRoutes = require('./routes/pet_routes')

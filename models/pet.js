@@ -8,13 +8,13 @@ const petSchema = new Schema(
             type: String,
             required: true
         },
-        breed: {
+        species: {
             type: String,
             required: true
         },
-        isfixed: {
-            type: Boolean,
-            nullable: true
+        breed: {
+            type: String,
+            required: true
         }
     },
     {
