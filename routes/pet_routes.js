@@ -50,4 +50,15 @@ router.patch('/pets/:id', (req, res, next) => {
         .catch(next)
 })
 
+// DELETE
+// DELETE /pets/:id
+router.delete('/pets/:id', (req, res, next) => {
+    Pet.findById(req.params.id)
+        .then(pet => {
+            return pet.deleteOne()
+        })
+        .then(() => res.sendStatus(204))
+        .catch(next)
+})
+
 module.exports = router
