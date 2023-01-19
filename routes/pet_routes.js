@@ -39,4 +39,15 @@ router.post('/pets', (req, res, next) => {
         .catch(next)
 })
 
+// UPDATE
+// PATCH /pets/:id
+router.patch('/pets/:id', (req, res, next) => {
+    Pet.findById(req.params.id)
+        .then(pet => {
+            return pet.updateOne(req.body.pet)
+        })
+        .then(() => res.sendStatus(204))
+        .catch(next)
+})
+
 module.exports = router
