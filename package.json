@@ -1,9 +1,4 @@
 {
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "mongoose": "^6.8.4"
-  },
   "name": "pet-tracker-server",
   "version": "1.0.0",
   "description": "General Assembly SEI project",
@@ -13,5 +8,10 @@
     "server": "nodemon server.js"
   },
   "author": "Paul Truitt",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.4"
+  }
 }
