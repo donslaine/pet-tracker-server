@@ -1,4 +1,6 @@
 const express = require('express')
+const { handle404 } = require('../lib/custom-errors')
+const { requireToken } = require('../config/auth')
 
 const Pet = require('../models/pet')
 
@@ -6,7 +8,7 @@ const router = express.Router()
 
 // INDEX
 // GET /characters
-router.get('/pets', (req, res, next) => {
+router.get('/pets', requireToken, (req, res, next) => {
     Pet.find()
         .then(pets => {
             return pets.map(pet => pet)
@@ -19,8 +21,9 @@ router.get('/pets', (req, res, next) => {
 
 // SHOW
 // GET /characters/:id
-router.get('/pets/:id', (req, res, next) => {
+router.get('/pets/:id', requireToken, (req, res, next) => {
     Pet.findById(req.params.id)
+        .then(handle404)
         .then(pet => {
             res.status(200).json({
                 pet: pet
@@ -31,7 +34,7 @@ router.get('/pets/:id', (req, res, next) => {
 
 // create paths
 // POST /pet
-router.post('/pets', (req, res, next) => {
+router.post('/pets', requireToken, (req, res, next) => {
     Pet.create(req.body.pet)
         .then(pet => {
             res.status(201).json({ pet: pet })
@@ -41,8 +44,9 @@ router.post('/pets', (req, res, next) => {
 
 // UPDATE
 // PATCH /pets/:id
-router.patch('/pets/:id', (req, res, next) => {
+router.patch('/pets/:id', requireToken, (req, res, next) => {
     Pet.findById(req.params.id)
+        .then(handle404)
         .then(pet => {
             return pet.updateOne(req.body.pet)
         })
@@ -52,8 +56,9 @@ router.patch('/pets/:id', (req, res, next) => {
 
 // DELETE
 // DELETE /pets/:id
-router.delete('/pets/:id', (req, res, next) => {
+router.delete('/pets/:id', requireToken, (req, res, next) => {
     Pet.findById(req.params.id)
+        .then(handle404)
         .then(pet => {
             return pet.deleteOne()
         })
