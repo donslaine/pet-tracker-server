@@ -15,6 +15,10 @@ const petSchema = new Schema(
         breed: {
             type: String,
             required: true
+        },
+        owner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
         }
     },
     {
