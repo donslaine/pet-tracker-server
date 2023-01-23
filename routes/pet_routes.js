@@ -35,6 +35,7 @@ router.get('/pets/:id', requireToken, (req, res, next) => {
 // create paths
 // POST /pet
 router.post('/pets', requireToken, (req, res, next) => {
+    // Pet.owner = req.user._id
     Pet.create(req.body.pet)
         .then(pet => {
             res.status(201).json({ pet: pet })

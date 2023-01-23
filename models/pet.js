@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const toySchema = require('./toy')
 
 const Schema = mongoose.Schema
 
@@ -16,6 +17,7 @@ const petSchema = new Schema(
             type: String,
             required: true
         },
+        toys: [toySchema],
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'

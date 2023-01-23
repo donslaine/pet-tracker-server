@@ -7,6 +7,7 @@ const PORT = 8000
 
 const petRoutes = require('./routes/pet_routes')
 const userRoutes = require('./routes/user_routes')
+const toyRoutes = require('./routes/toy_routes')
 
 // deprecation warning
 mongoose.set('strictQuery', true)
@@ -24,6 +25,7 @@ app.use(express.json())
 
 app.use(petRoutes)
 app.use(userRoutes)
+app.use(toyRoutes)
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)
